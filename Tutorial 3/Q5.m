@@ -1,0 +1,15 @@
+clear; clc; clf;
+A =1; f0 = 100; ppi = pi / 6; fs = 2000;
+N = input('Enter the length of sequence:');
+n = 0 : 1/fs : (N-1) / fs;
+sig = A*cos(2*pi*f0*n + pi);
+waxis = linspace(-1, 1, 1024);
+timeaxis = 0: length(sig) - 1;
+F = fftshift(fft(sig, 1024));
+sigdtft = abs(F);
+subplot(2,1,1), stem(timeaxis, sig);
+title('Signal');
+xlabel('Index');
+subplot(2,1,2), plot(waxis,sigdtft);
+title ('DTFT Magnitude');
+xlabel('Digital Frequency');

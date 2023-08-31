@@ -1,0 +1,12 @@
+clear;clc;clf;
+num = [1 1] ; den = [1 -0.77];
+[z, p, k] = tf2zp(num, den);
+figure(1);
+zplane(z,p);
+title('pole-zero plot');
+figure(2);
+impz(num, den, 20);
+title('impulse response plot');
+figure(3);
+freqz(num, den, 64);
+title('Frequency response plot');
